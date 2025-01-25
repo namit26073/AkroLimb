@@ -103,8 +103,8 @@
     /* color-1(#f26522)
      * color-2(#035d5c)
      */
-    --color-1                      : hsla(19, 89%, 54%, 1);
-    --color-2                      : hsla(179, 94%, 19%, 1);
+    --color-1                      : rgb(254, 0, 181);
+    --color-2                      : rgb(94, 3, 49);
 
     /* theme color variations
      */
@@ -3370,11 +3370,11 @@ img.u-pull-left {
  *
  *
  * ------------------------------------------------------------------- */
-.s-intro {
+/* .s-intro {
     --content-padding-top    : 20vh;
     --content-padding-bottom : 9.6rem;
     z-index                  : 3;
-    background-color         : white;
+    background-color         : transparent;
     width                    : 100%;
     height                   : 100vh;
     min-height               : calc(25.5 * var(--space));
@@ -3383,6 +3383,21 @@ img.u-pull-left {
     display: flex;
     align-items: center;
     justify-content: center;
+} */
+
+.s-intro {
+    --content-padding-top    : 20vh;
+    --content-padding-bottom : 9.6rem;
+    z-index                  : 3;
+    background-color         : transparent;
+    width                    : 100%;
+    height                   : 100vh;
+    min-height               : 100vh; /* Ensure it covers the full viewport height */
+    overflow                 : hidden;
+    position                 : relative;
+    display                  : flex;
+    align-items              : center;
+    justify-content          : center;
 }
 
 /* --------------------------------------------------------------------
@@ -3403,7 +3418,24 @@ img.u-pull-left {
     left                : auto;
 } */
 
-.s-intro__bg::before {
+/* Intro background styles */
+.s-intro__bg {
+    display             : block;
+    background          : url('../images/shunya.png') no-repeat center center; /* Use your background image path */
+    background-size     : cover; /* Make the background image cover the entire container */
+    background-attachment: fixed; /* Keep the background image fixed when scrolling */
+    height              : 100vh; /* Ensure it covers the full viewport height */
+    width               : 100vw; /* Ensure it covers the full viewport width */
+    position            : absolute;
+    top                 : 0;
+    left                : 0;
+    z-index: -1; 
+    pointer-events: none;
+    transform: translateY(0);
+    transition: transform 0.2s ease-out;
+}
+
+/* .s-intro__bg::before {
     display        : block;
     content        : "";
     position       : absolute;
@@ -3416,9 +3448,9 @@ img.u-pull-left {
     background     : white;
     pointer-events : none;
     opacity        : .5;
-}
+} */
 
-.s-intro__bg::after {
+/* .s-intro__bg::after {
     display        : block;
     content        : "";
     position       : absolute;
@@ -3431,11 +3463,19 @@ img.u-pull-left {
     background     : black;
     pointer-events : none;
     opacity        : .3;
-}
+} */
 
 /* --------------------------------------------------------------------
  * ## intro content
  * -------------------------------------------------------------------- */
+ 
+ html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+ 
  .s-intro__content {
     z-index: 2;
     display: flex;
@@ -3449,24 +3489,22 @@ img.u-pull-left {
     position: relative;
 }
 
-.s-intro__content-bg {
+/* .s-intro__content-bg {
     display: block;
-    background-image: url('../images/render2.png'); /* Use your background image path */
+    background-image: url('../images/shunya.png'); 
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw; /* Make it stretch to the full width of the viewport */
-    height: 1200px; /*Make it stretch to the full height of the viewport*/
-    z-index: -1; /* Keep it behind the content */
+    width: 100vw; 
+    height: 1200px; 
+    z-index: -1; 
     pointer-events: none;
     transform: translateY(0);
     transition: transform 0.2s ease-out;
-}
-
-
+} */
 
 .s-intro__content-bg::before {
     display        : block;
@@ -3485,12 +3523,12 @@ img.u-pull-left {
 
 
 .s-intro__content-title {
-    --text-title-size: 8.8rem;
+    --text-title-size: 6rem;
     --text-multiplier: 1;
-    font-weight: 600;
+    font-weight: 100;
     font-size: calc(var(--text-title-size) * var(--text-multiplier));
     line-height: 1.227;
-    color: white;
+    color: rgb(255, 255, 255);
     margin: 0;
     text-align: left; /* Ensures text is aligned to the left */
     padding: 0;
@@ -3888,7 +3926,7 @@ img.u-pull-left {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../images/Group.jpg') no-repeat center center/cover;
+    background: url('../images/Group.png') no-repeat center center/cover;
     z-index: -1;
 }
 
